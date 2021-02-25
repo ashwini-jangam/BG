@@ -1,0 +1,16 @@
+com\testingshatra\setup\SeleniumBase.class
+com\testingshashtra\utility\WaitFor.class
+com\testingshatra\keywords\UIKeywords.class
+com\testingshshtra\testcases\LoginTest.class
+com\testingshshtra\pages\DashboardPage.class
+com\testingshshtra\pages\MasterPage.class
+com\testingshshtra\pages\EditBankPage.class
+com\testingshshtra\pages\LoginPage.class
+com\testingshashtra\utility\RunnerTest.class
+com\testingsshatra\exceptions\UnabletoGetBrowserException.class
+com\testingsshatra\exceptions\InvalidURLException.class
+com\testingshashtra\utility\Locators.class
+com\testingshashtra\utility\PropertyUtility.class
+com\testingshashtra\utility\Config.class
+com\testingshashtra\utility\Constance.class
+com\testingshshtra\pages\AddBankPage.class

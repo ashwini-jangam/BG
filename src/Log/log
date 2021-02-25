@@ -1,0 +1,4 @@
+2021-Feb-26 00:33:02,433 [main] com.testingshashtra.utility.Config 
+  INFO  Lunching Browser : http://103.50.162.196/testing/user-login.php
+2021-Feb-26 00:33:25,975 [main] com.testingshatra.setup.SeleniumBase 
+  INFO  Browser Closed

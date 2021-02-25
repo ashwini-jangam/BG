@@ -1,0 +1,4 @@
+# Created at 2021-02-24T23:48:34.389
+Boot Manifest-JAR contains absolute paths in classpath 'E:\Hawthorn2020\BhimanGroup\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+
