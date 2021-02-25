@@ -68,6 +68,7 @@ public class LoginTest {
 	public void verify_error_msg_for_mobile_numbe() {
 		String actual = " ";
       // if (Constance.driver.findElement(l.mobileErrorMsg).isDisplayed()==true) {
+		try {
 			String mobile = l.getMobileTxt();
 			if (mobile.length() > 10 || mobile.length() < 10 || !(mobile.length() == 0)) {
 				actual = l.getMobileFieldErrorOnLabel();
@@ -89,6 +90,9 @@ public class LoginTest {
 				Assert.assertEquals(actual, "Please provide a password");
 
 			}
+		}catch(NoSuchElementException e) {
+			e.getMessage();
+		}
 		}
 	}
 
