@@ -4,6 +4,8 @@ import java.util.NoSuchElementException;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
 import com.testingshashtra.utility.Constance;
 import com.testingshashtra.utility.WaitFor;
 import com.testingshshtra.pages.LoginPage;
@@ -67,32 +69,47 @@ public class LoginTest {
 	@Then("verify error msg for mobile number")
 	public void verify_error_msg_for_mobile_numbe() {
 		String actual = " ";
-      // if (Constance.driver.findElement(l.mobileErrorMsg).isDisplayed()==true) {
-		try {
-			String mobile = l.getMobileTxt();
-			if (mobile.length() > 10 || mobile.length() < 10 || !(mobile.length() == 0)) {
-				actual = l.getMobileFieldErrorOnLabel();
-				LOG.info("Mobile Field Error : " + actual);
-				Assert.assertEquals(actual, "Please Enter Proper Mobile Number");
-			} else if (mobile.equals(" ")) {
-				actual = l.getMobileFieldErrorOnLabel();
-				LOG.info("Mobile Field is Empty : " + actual);
-				Assert.assertEquals(actual, "Please Enter Mobile Number");
-			}
-			 else if (l.getPasswordtxt().length() < 5 || !(l.getPasswordtxt().length() == 0) ){
-					 // || Constance.driver.findElement(l.mobileErrorMsg).isDisplayed()== false) {
-				actual = l.getPasswordfieldErrorOnLable();
-				LOG.info("Password Field Error: " + actual);
-				Assert.assertEquals(actual, "Your password must be at least 5 characters long");
-			} else if (l.getPasswordtxt().equals(" ")) {
-				actual = l.getPasswordfieldErrorOnLable();
-				LOG.info("Password Field is Empty : " + actual);
-				Assert.assertEquals(actual, "Please provide a password");
-
-			}
-		}catch(NoSuchElementException e) {
-			e.getMessage();
-		}
-		}
+				String mobile = l.getMobileTxt();
+				
+				if (mobile.length() > 10 || mobile.length() < 10 && !(mobile.length()==0)) {
+					actual = l.getMobileFieldErrorOnLabel();
+					LOG.info("Mobile Field Error : " + actual);
+					Assert.assertEquals(actual, "Please Enter Proper Mobile Number");
+				} else  if (mobile.length()==0)
+				 {
+					 actual = l.getMobileFieldErrorOnLabel();
+						LOG.info("Mobile Field is Empty : " + actual);
+						Assert.assertEquals(actual, "Please Enter Mobile Number");
+				 }
 	}
 
+	@Then("verify error msg for Password")
+	public void verify_error_msg_for_Password() {
+		String actual = " ";
+		String password = l.getPasswordtxt();
+		if(password.length() < 5  && !(password.length()==0)) {
+				actual = l.getPasswordfieldErrorOnLable();
+			LOG.info("Password Field Error: " + actual);
+			Assert.assertEquals(actual, "Your password must be at least 5 characters long");
+          }
+		else if(password.length()==0) {
+			actual = l.getPasswordfieldErrorOnLable();
+			LOG.info("Password Field is Empty : " + actual);
+			Assert.assertEquals(actual, "Please provide a password");
+		}
+	
+	}
+	@Then("verify error msg blank input")
+	public void verify_error_msg_blank_input() {
+		String mobilemsg = l.getMobileFieldErrorOnLabel();
+		String passwordmsg = l.getPasswordfieldErrorOnLable() ;
+		
+		SoftAssert asrt = new SoftAssert();
+		LOG.info("Mobile field is blank ");
+		asrt.assertEquals(mobilemsg, "Please Enter Mobile Number");
+		LOG.info("Password field is blank ");
+		
+		asrt.assertEquals(passwordmsg, "Please provide a password");
+		asrt.assertAll();
+	}
+}
